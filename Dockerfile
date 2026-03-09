@@ -3,19 +3,16 @@ FROM python:3.12-slim
 WORKDIR /app
 ENV PYTHONUNBUFFERED=1
 
-# Copy requirements first for better caching
-COPY requirements.txt .
+# uv 설치
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# 의존성 설치
+COPY pyproject.toml ./
+RUN uv sync --no-dev
 
-# Copy application code
+# 소스 복사
 COPY . .
-# Ensure data directory exists and has permissions
 RUN mkdir -p data/PaperBananaBench/diagram data/PaperBananaBench/plot && chmod -R 777 data
 
-# Expose port
 EXPOSE 8080
-
-# Run Streamlit
-CMD ["streamlit", "run", "demo.py", "--server.port", "8080", "--server.address", "0.0.0.0"]
+CMD ["/bin/bash", "entrypoint.sh"]

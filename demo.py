@@ -408,30 +408,16 @@ def main():
                 help="How to retrieve reference diagrams: auto (automatic selection), manual (use specified references), random (random selection), none (no retrieval)"
             )
             
-            num_candidates = st.number_input(
-                "Number of Candidates",
-                min_value=1,
-                max_value=20,
-                value=10,
-                key="tab1_num_candidates",
-                help="How many parallel candidates to generate"
-            )
-            
+            num_candidates = 1
+
             aspect_ratio = st.selectbox(
                 "Aspect Ratio",
                 ["21:9", "16:9", "3:2"],
                 key="tab1_aspect_ratio",
                 help="Aspect ratio for the generated diagrams"
             )
-            
-            max_critic_rounds = st.number_input(
-                "Max Critic Rounds",
-                min_value=1,
-                max_value=5,
-                value=3,
-                key="tab1_max_critic_rounds",
-                help="Maximum number of critic refinement iterations"
-            )
+
+            max_critic_rounds = 3
             
             default_model = get_config_val("defaults", "model_name", "MODEL_NAME", "YOUR_MODEL_NAME_HERE")
             options = ["", default_model] if default_model else ["", "YOUR_MODEL_NAME_HERE"]

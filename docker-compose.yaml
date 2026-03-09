@@ -1,0 +1,12 @@
+services:
+    paperbanana:
+        build: .
+        ports:
+            - "9442:8080"
+        env_file:
+            - .env
+        volumes:
+            - ./data:/app/data
+            - ./results:/app/results
+            - ./configs:/app/configs
+        restart: unless-stopped

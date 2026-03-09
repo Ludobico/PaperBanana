@@ -16,11 +16,11 @@
 
 # Default Models
 defaults:
-  model_name: "" # e.g., "gemini-3-pro-preview"
-  image_model_name: "" # e.g., "gemini-3-pro-image-preview"
-  
+    model_name: "gemini-3-pro-preview" # e.g., "gemini-3-pro-preview"
+    image_model_name: "gemini-3-pro-image-preview" # e.g., "gemini-3-pro-image-preview"
+
 # API Keys. If you are using all gemini models, you can leave the other keys empty.
 api_keys:
-  google_api_key: "" # e.g. "xxxxxxxxxxxxx"
-  openai_api_key: ""
-  anthropic_api_key: ""
+    google_api_key: "" # e.g. "xxxxxxxxxxxxx"
+    openai_api_key: ""
+    anthropic_api_key: ""
